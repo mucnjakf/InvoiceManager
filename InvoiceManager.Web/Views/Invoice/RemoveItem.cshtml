@@ -1,0 +1,40 @@
+﻿@model InvoiceApp.ViewModels.RemoveInvoiceItemViewModel
+
+@{
+    ViewData["Title"] = $"Invoice - { Model.Invoice.InvoiceNumber } - Remove Item";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="row text-center align-items-center col-md-4 offset-md-4">
+    <form asp-controller="Invoice" asp-action="RemoveItem" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label style="font-size:24px" asp-for="ItemId" class="control-label">Item:</label>
+        </div>
+
+        <div class="form-group">
+            <select asp-for="ItemId" asp-items="Model.Items" class="form-control"></select>
+            <span asp-validation-for="ItemId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" name="InvoiceId" value="@Model.Invoice.Id" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Remove item" class="btn btn-danger" />
+        </div>
+    </form>
+</div>
+
+<div class="text-center">
+    <a asp-controller="Invoice" asp-action="ViewInvoice" asp-route-id="@Model.Invoice.Id">Back to Invoice</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

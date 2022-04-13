@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DataAccessLayer.Models.Invoice>
+
+@{
+    ViewData["Title"] = "Invoices";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+@using (Html.BeginForm("Create", "Invoice", FormMethod.Get))
+{
+    <p>
+        <button class="btn btn-primary">Create new Invoice</button>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPriceWithVat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipient)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var invoice in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => invoice.InvoiceNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => invoice.TotalPriceWithVat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => invoice.Recipient)
+                </td>
+                <td>
+                    <a asp-action="ViewInvoice" asp-route-id="@invoice.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@invoice.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@invoice.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p class="text-center"><i>No invoices</i></p>
+}
+
+<hr />

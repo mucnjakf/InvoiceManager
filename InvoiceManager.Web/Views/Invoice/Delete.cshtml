@@ -1,0 +1,78 @@
+﻿@model DataAccessLayer.Models.Invoice
+
+@{
+    ViewData["Title"] = $"Delete Invoice - { Model.InvoiceNumber }";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.InvoiceNumber)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.TotalPriceWithoutVat)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.TotalPriceWithoutVat)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.TotalPriceWithVat)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.TotalPriceWithVat)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Recipient)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.Recipient)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Vat)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.Vat)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.ApplicationUser)
+        </dt>
+        <dd class="col-sm-5">
+            @Model.ApplicationUser.ToString()
+        </dd>
+    </dl>
+
+    <hr />
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+
+    <br />
+
+    @using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+    {
+        <div>
+            <button class="btn btn-danger">Back to Invoices</button>
+        </div>
+    }
+</div>
