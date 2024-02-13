@@ -1,0 +1,125 @@
+﻿@model InvoiceApp.ViewModels.ViewInvoiceViewModel
+
+@{
+    ViewData["Title"] = $"Invoice - { Model.InvoiceNumber }";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<hr />
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.InvoiceNumber)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.TotalPriceWithoutVat)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.TotalPriceWithoutVat)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.TotalPriceWithVat)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.TotalPriceWithVat)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Recipient)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.Recipient)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.Vat)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.Vat)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.ApplicationUser)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.ApplicationUser)
+        </dd>
+    </dl>
+
+    <hr />
+
+    <h4>Items</h4>
+
+    <ul class="list-group">
+        @foreach (var invoiceItem in Model.Items)
+        {
+            <li class="list-group-item">
+                Name:
+                @invoiceItem.Item.Name |
+                Description:
+                @invoiceItem.Item.Description |
+                Amount:
+                @invoiceItem.Item.Amount |
+                Price: 
+                @invoiceItem.Item.Price |
+                Total price:
+                @invoiceItem.Item.TotalPrice
+            </li>
+        }
+    </ul>
+
+    @if (Model.Items.Count == 0)
+    {
+        <p><ul class="list-group"><li class="list-group-item"><i>No items</i></li></ul></p>
+    }
+
+    <br />
+
+    <p>
+        <a asp-controller="Item"
+           asp-action="Create">
+            Create item
+        </a>
+        |
+        <a asp-controller="Invoice"
+           asp-action="AddItem"
+           asp-route-id="@Model.Invoice.Id">
+            Add item
+        </a>
+
+        @if (Model.Items.Count > 0)
+        {
+            <span>|</span>
+            <a asp-controller="Invoice"
+               asp-action="RemoveItem"
+               asp-route-id="@Model.Invoice.Id">
+                Remove item
+            </a>
+        }
+    </p>
+</div>
+
+<hr />
+
+<br />
+
+@using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+{
+    <div>
+        <button class="btn btn-danger">Back to Invoices</button>
+    </div>
+}

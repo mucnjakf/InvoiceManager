@@ -1,0 +1,62 @@
+﻿@model InvoiceApp.ViewModels.EditInvoiceViewModel
+
+@{
+    ViewData["Title"] = $"Edit Invoice - { Model.InvoiceNumber }";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form asp-controller="Invoice" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="InvoiceNumber" class="control-label"></label>
+                <input asp-for="InvoiceNumber" class="form-control" />
+                <span asp-validation-for="InvoiceNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label"></label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipient" class="control-label"></label>
+                <input asp-for="Recipient" class="form-control" />
+                <span asp-validation-for="Recipient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vat" class="control-label"></label>
+                <select class="custom-select" name="Vat" id="vat">
+                    <option value="25%">Croatia - 25%</option>
+                    <option value="22%">Italy - 22%</option>
+                    <option value="20%">Germany - 20%</option>
+                    <option value="19%">France - 19%</option>
+                    <option value="17%">Bosnia and Herzegovina - 17%</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@using (Html.BeginForm("Index", "Invoice", FormMethod.Get))
+{
+    <div class="text-center">
+        <button class="btn btn-danger">Back to Invoices</button>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
