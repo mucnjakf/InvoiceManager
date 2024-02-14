@@ -5,7 +5,7 @@ Invoice Management Web Application - 2020.
 ---
 
 ### **Overview**
-Invoice Manager is a web application for managing invoices.
+InvoiceManager is a comprehensive application designed to streamline the process of invoice management for businesses of all sizes. With InvoiceManager, users can efficiently create and track invoices, simplifying the billing process and improving cash flow management.
 
 ---
 
@@ -20,7 +20,8 @@ Invoice Manager is a web application for managing invoices.
 ---
 
 ### **Tools**
-- Source Control: JetBrains Space
+- Source Control: GitHub
 - IDE: Visual Studio 2019
+- RDBMS: SQL Server Managment Studio
 
 ---
