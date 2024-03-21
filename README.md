@@ -1,4 +1,4 @@
-# <img src="invoicemanager.png" width="25"/> InvoiceManager
+# <img src="invoicemanager.svg" width="25"/> InvoiceManager
 
 ### **👁️ Overview**
 Invoice Management Web Application - 2020.
