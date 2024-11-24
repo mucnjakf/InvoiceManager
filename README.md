@@ -11,8 +11,8 @@ Invoice Management Web Application - 2020.
 
 ### **⚙️ Tech Stack**
 - .NET Core 3.1 - ASP.NET Core MVC
-- Entity Framework Core
 - ASP.NET Core Identity
+- Entity Framework Core
 - Managed Extensibility Framework
 - Bootstrap 4
 - Microsoft SQL Server
